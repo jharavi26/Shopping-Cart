@@ -24,4 +24,26 @@
 .filter > div{
   margin-right: 0;
 } 
+
+.product-image{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  gap: 5px;
+  width: 250px;
+  height: 400px;
+}
+
+.product-image > span{
+  text-align: center;
+}
+
+.product-image > button{
+  width: 40%;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-left: 30%;
+  margin-bottom: 5px;
+
+}
  
