@@ -10,12 +10,16 @@ const Context = ({ children }) => {
     cart: []
   };
 
+ 
+
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  const [productState, productDispatch] = useReducer(productReducer, {
-    price : 0,
-    searchQuery : ""
-  });
+  const [productState , productDispatch] = useReducer(productReducer , {
+    sort : "",
+    searchQuery : "",
+  })
+
+ 
 
  
   // Fetch data and update the state via dispatch
