@@ -1,10 +1,11 @@
 import React from 'react';
+import { CartState } from './context/Context';
 import "./Style.css";
 
 
 function SingleProduct({item}) {
 
-  // const {state :{cart}, dispatch}  = CartState();
+  const {state :{cart}, dispatch,}  = CartState();
 
   return (
     <div className='product'>
@@ -13,8 +14,10 @@ function SingleProduct({item}) {
        <span>Category : {item.category}</span>
        <span>Price : {item.price}</span>
        <span>Rating : {item.rating}</span>
-       <button style = {{backgroundColor : "green"}}>Add to Cart</button>
-       <button style={{backgroundColor :"red"}}>Remove the Card</button>
+       { cart.some((p)=>p.id === item.id) ? (
+        <button style={{backgroundColor :"yellow"}} onClick={()=>dispatch({type : "REMOVE_FROM_CART" , payload : item, })}>Remove </button> ) : (
+       <button style = {{backgroundColor : "green" , color :"white"}} onClick={()=> dispatch({type : "ADD_TO_CART", payload : item,})}>Add to Cart</button>
+        )}
       </div>
      
       
