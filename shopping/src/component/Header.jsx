@@ -13,13 +13,10 @@ function Header() {
  const {state  : {cart}, dispatch } = CartState();
  const [open , setOpen] = useState(false); 
 
+
  const handleClick = ()=>{
-  if(cart.length>0)
-  {
-  setOpen(!open)
-  }
-  else if(cart.length === 0 ){
-    setOpen(false)
+  if(cart.length>0){
+    setOpen((prev)=>!prev)
   }
  } 
 
@@ -53,11 +50,12 @@ function Header() {
           })
         }}
         />
-        </span>
-
-        
+        </span> 
        )
     )}
+    <Link to={"/cart"}>
+    <button style = {{width : "90%", fontSize:"14px" , marginLeft : "10px", backgroundColor : "blue" , color  : "white"}}>Go to Cart</button>
+    </Link>
     </div>
         </>
       )  : null}  

@@ -12,8 +12,8 @@ function SingleProduct({item}) {
       <div className='product-image'>
        <img src = {item.thumbnail} alt = {item.description}/>
        <span>Category : {item.category}</span>
-       <span>Price : {item.price}</span>
-       <span>Rating : {item.rating}</span>
+       <span>Price : {item.price.toString().split("")[0]}</span>
+       <span>Rating : {Math.floor(item.rating)}</span>
        { cart.some((p)=>p.id === item.id) ? (
         <button style={{backgroundColor :"yellow"}} onClick={()=>dispatch({type : "REMOVE_FROM_CART" , payload : item, })}>Remove </button> ) : (
        <button style = {{backgroundColor : "green" , color :"white"}} onClick={()=> dispatch({type : "ADD_TO_CART", payload : item,})}>Add to Cart</button>
