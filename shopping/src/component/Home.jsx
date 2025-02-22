@@ -7,8 +7,8 @@ import Filter from './Filter';
 const Home = () => {
 
   const { state : {products}, 
-  productState : {sort , searchQuery} } = CartState();
-  console.log("state in Home :" , searchQuery);
+  productState : {sort , searchQuery } } = CartState();
+
 
   const transformProducts = ()=>{
     let sortedProducts = [...products];
@@ -16,9 +16,22 @@ const Home = () => {
     if(sort)
     {
       sortedProducts = sortedProducts.sort((a,b)=>
-        sort ==="lowTOHigh" && a.price-b.price
+        sort ==="LowTOHigh" && a.price-b.price
       )
     }
+    else{
+      sortedProducts = sortedProducts.sort((a,b)=>
+        sort ==="HighToLow" && b.price-a.price
+    )
+    }
+    if(searchQuery)
+    {
+      sortedProducts = sortedProducts.filter((item)=>
+        item.category.toLowerCase().includes(searchQuery)
+      );
+    }
+    
+  
     return sortedProducts;
   }
 

@@ -9,8 +9,12 @@ import { AiFillDelete } from 'react-icons/ai';
 
 
 function Header() {
+  
+ const {state : {cart}, 
+ dispatch ,  
+ productState : {searchQuery} ,
+ productDispatch} = CartState();
 
- const {state  : {cart}, dispatch } = CartState();
  const [open , setOpen] = useState(false); 
 
 
@@ -21,10 +25,15 @@ function Header() {
  } 
 
 
+
   return (
     <div className='header'>
       <Link className='link' to="/">Shopping Cart</Link>
-      <input type='text' placeholder='Search a Product'></input>
+      <input type='text' placeholder='Search a Product' value = {searchQuery} onChange={(e)=>{
+        productDispatch({type : "FILTER_BY_SEARCH" , 
+          payload: e.target.value,
+        }); 
+      }}></input>
       <button onClick={()=>handleClick()} >
         <FaShoppingCart/>
         <Badge value={cart.length}></Badge> 
